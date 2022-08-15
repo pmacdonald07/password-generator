@@ -21,15 +21,8 @@ function generatePassword() {
   baseString = "";
   masterArray = [];
 
-  //generate password length
-  userPassLength = window.prompt("How long do you want your password to be?");
-  userPassLength = parseInt(userPassLength);
-
-  if (userPassLength < 8 || userPassLength > 128 || isNaN(userPassLength)) {
-      window.alert("Your password must be between 8 and 128 characters long. Please try again!");
-      generatePassword();
-      //askLength();
-    }
+  //establish password length
+  askLength ();
 
   //call function for password criteria
   passCriteria();
@@ -41,6 +34,16 @@ function generatePassword() {
 
   //deliver password to user
   insertText(baseString);
+}
+
+function askLength () {
+  userPassLength = window.prompt("How long do you want your password to be?");
+  userPassLength = parseInt(userPassLength);
+
+  if (userPassLength < 8 || userPassLength > 128 || isNaN(userPassLength)) {
+      window.alert("Your password must be between 8 and 128 characters long. Please try again!");
+      askLength();
+    }
 }
 
 //function that creates the random string that will make up the password
