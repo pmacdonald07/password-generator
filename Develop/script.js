@@ -22,13 +22,14 @@ function generatePassword() {
   masterArray = [];
 
   //generate password length
-  var userPassLength = window.prompt("How long do you want your password to be?")
-    userPassLength = parseInt(userPassLength);
-    if (userPassLength < 8 || userPassLength > 128) {
+  userPassLength = window.prompt("How long do you want your password to be?");
+  userPassLength = parseInt(userPassLength);
+
+  if (userPassLength < 8 || userPassLength > 128 || isNaN(userPassLength)) {
       window.alert("Your password must be between 8 and 128 characters long. Please try again!");
-      askLength();
+      generatePassword();
+      //askLength();
     }
-  console.log(userPassLength);
 
   //call function for password criteria
   passCriteria();
@@ -68,7 +69,7 @@ function passCriteria () {
     masterArray = masterArray.concat(symbols)
   }
   if (!lowerCaseConfirm && !upperCaseConfirm && !numberConfirm && !symbolConfirm) {
-    window.alert("You must select at least one criteria. Please try again");
+    window.alert("You must select at least one criteria. Please try again.");
     passCriteria();
   }
 }
